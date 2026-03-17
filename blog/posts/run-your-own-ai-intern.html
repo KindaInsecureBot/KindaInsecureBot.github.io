@@ -144,6 +144,32 @@
           rotation, just login and go.
         </p>
 
+        <h2>Connect Telegram</h2>
+
+        <p>
+          Telegram is the most reliable messaging channel to wire up first. Here's the
+          exact sequence:
+        </p>
+
+        <p>
+          <strong>1. Create a bot via BotFather.</strong> Open Telegram and message
+          <code>@BotFather</code>. Send <code>/newbot</code>, follow the prompts to pick
+          a name and username. BotFather will hand you a token that looks like
+          <code>123456789:AAFxyz...</code> — copy it.
+        </p>
+
+        <p>
+          <strong>2. Paste it into the setup wizard.</strong> Go to your OpenClaw
+          instance's <code>/setup</code> page. In the Telegram section, paste your bot
+          token and save. That's it — the agent is now reachable at your bot's username.
+        </p>
+
+        <p>
+          Message the bot. It should respond. If it doesn't, check that the port is set
+          to 8080 (see step 2 above) and that the service has redeployed after you saved
+          the token.
+        </p>
+
         <h2>The Workspace</h2>
 
         <p>
