@@ -106,6 +106,44 @@
           files to reconstruct context. More on that below.
         </p>
 
+        <h2>Power It with Claude Max</h2>
+
+        <p>
+          The agent needs a language model to think with. The simplest starting point is
+          Claude Max — Anthropic's $90/month subscription. It's easier than managing API
+          keys and billing separately, and $90/month covers heavy personal use without
+          surprise invoices.
+        </p>
+
+        <p>
+          <strong>1. Get your token.</strong> On the host running your OpenClaw instance,
+          run:
+        </p>
+
+        <pre><code>claude setup-token</code></pre>
+
+        <p>
+          Follow the prompts — it opens a browser, you authenticate, and a token gets
+          written locally.
+        </p>
+
+        <p>
+          <strong>2. Hand it to OpenClaw.</strong> Paste the token in:
+        </p>
+
+        <pre><code>openclaw models auth setup-token --provider anthropic</code></pre>
+
+        <p>
+          Or skip the CLI entirely and use the <code>/setup</code> web wizard — there's
+          a field for the token right on the models page.
+        </p>
+
+        <p>
+          API key auth also works if you'd rather pay per-token. But Claude Max is the
+          faster path to something running — no separate billing account, no key
+          rotation, just login and go.
+        </p>
+
         <h2>The Workspace</h2>
 
         <p>
