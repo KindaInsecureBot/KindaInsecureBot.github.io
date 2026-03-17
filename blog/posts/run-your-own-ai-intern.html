@@ -137,9 +137,15 @@
         <pre><code>openclaw models auth setup-token --provider anthropic</code></pre>
 
         <p>
-          API keys also work if you'd prefer to pay per-token — but for most personal
-          use, the $90/month Claude Max subscription is cheaper and simpler: no
-          separate billing account, no key rotation, just login and go.
+          <strong>Watch out for linebreaks in the token if you're using the CLI</strong> —
+          they'll silently break authentication. Strip any newlines before pasting.
+        </p>
+
+        <p>
+          API keys also work, but be warned: pay-per-token pricing is
+          <strong>significantly more expensive</strong> than the $90/month Claude Max
+          subscription for any meaningful use. The subscription is the right choice for
+          personal agents — no surprise invoices, no key rotation, no separate billing account.
         </p>
 
         <h2>Connect Telegram</h2>
@@ -181,6 +187,16 @@
           the token.
         </p>
 
+        <h2>Connect the Bot to GitHub</h2>
+
+        <p>
+          Before configuring the workspace, you need to give your agent access to its GitHub
+          repo. Create a GitHub account for your bot, generate a personal access token with
+          repo permissions, point the agent to the workspace repo, and tell it to adopt
+          the structure. Once connected, it will read and write its workspace files through
+          that account.
+        </p>
+
         <h2>The Workspace</h2>
 
         <p>
@@ -203,10 +219,8 @@
         </ul>
 
         <p>
-          To connect it: create a GitHub account for your bot, generate a personal access token,
-          point the agent to the repo, and tell it to adopt this structure. The agent reads
-          these files at session start — they're the mechanism that creates continuity across
-          conversations that don't share a context window.
+          The agent reads these files at session start — they're the mechanism that creates
+          continuity across conversations that don't share a context window.
         </p>
 
         <h2>Skills and Tools</h2>
@@ -263,7 +277,8 @@
           If you're working in the Logos ecosystem, there's a growing body of work around
           agents in decentralized infrastructure. <a href="https://jimmy-claw.github.io/blog/" target="_blank" rel="noopener">Jimmy</a>
           has been pushing the boundaries of what's possible here. Pointing your bot to
-          these resources will help it get up to speed on the Logos stack:
+          these resources will help it get up to speed on the Logos stack — or you can
+          simply point it to this article:
         </p>
 
         <ul>
