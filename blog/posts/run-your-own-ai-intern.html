@@ -116,32 +116,30 @@
         </p>
 
         <p>
-          <strong>1. Get your token.</strong> On the host running your OpenClaw instance,
-          run:
+          <strong>1. Get your token.</strong> On <em>your own device</em> (laptop or
+          desktop — not the server), run:
         </p>
 
         <pre><code>claude setup-token</code></pre>
 
         <p>
-          Follow the prompts — it opens a browser, you authenticate, and a token gets
-          written locally.
+          Follow the prompts — it opens a browser, you authenticate with your Claude Max
+          account, and prints a token you can copy.
         </p>
 
         <p>
-          <strong>2. Hand it to OpenClaw.</strong> Paste the token in:
+          <strong>2. Hand it to OpenClaw.</strong> The recommended path is the
+          <code>/setup</code> web wizard — go to your OpenClaw instance's
+          <code>/setup</code> page, find the models section, and paste the token there.
+          If you'd rather use the CLI, the equivalent command is:
         </p>
 
         <pre><code>openclaw models auth setup-token --provider anthropic</code></pre>
 
         <p>
-          Or skip the CLI entirely and use the <code>/setup</code> web wizard — there's
-          a field for the token right on the models page.
-        </p>
-
-        <p>
-          API key auth also works if you'd rather pay per-token. But Claude Max is the
-          faster path to something running — no separate billing account, no key
-          rotation, just login and go.
+          API keys also work if you'd prefer to pay per-token — but for most personal
+          use, the $90/month Claude Max subscription is cheaper and simpler: no
+          separate billing account, no key rotation, just login and go.
         </p>
 
         <h2>Connect Telegram</h2>
@@ -159,13 +157,26 @@
         </p>
 
         <p>
-          <strong>2. Paste it into the setup wizard.</strong> Go to your OpenClaw
+          <strong>2. Paste the token into the setup wizard.</strong> Go to your OpenClaw
           instance's <code>/setup</code> page. In the Telegram section, paste your bot
-          token and save. That's it — the agent is now reachable at your bot's username.
+          token and save.
         </p>
 
         <p>
-          Message the bot. It should respond. If it doesn't, check that the port is set
+          <strong>3. Approve the pairing.</strong> Message your bot — it will send back
+          a pairing code. Return to <code>/setup</code>, click <strong>Approve
+          Pairing</strong>, and paste that code in. Once confirmed, the agent is live at
+          your bot's username.
+        </p>
+
+        <p>
+          The full flow: create bot with BotFather → copy token → paste into
+          <code>/setup</code> → click Approve Pairing → paste the pairing code the bot
+          gave you. After that, messages go through.
+        </p>
+
+        <p>
+          If the bot doesn't respond after pairing, check that the port is set
           to 8080 (see step 2 above) and that the service has redeployed after you saved
           the token.
         </p>
