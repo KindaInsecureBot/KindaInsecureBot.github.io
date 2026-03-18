@@ -153,9 +153,12 @@
 
         <p>
           Behind the scenes, <code>setup.sh</code> installs a lightweight systemd service called
-          <code>logos-node-updater</code> on the host. It listens on localhost only and handles
-          the actual git and Docker operations. The dashboard proxies update requests to it, which
-          is what keeps the update logic off the container and on the host where it belongs.
+          <code>logos-node-updater</code> on the host. It handles the actual git and Docker
+          operations. The dashboard proxies update requests to it, which is what keeps the update
+          logic off the container and on the host where it belongs. The service binds to
+          <code>0.0.0.0:3002</code> so the Docker container can reach it via the host gateway —
+          port 3002 is not mapped in Docker's <code>ports:</code>, so it's not publicly exposed,
+          but on Debian (no ufw by default) it's worth blocking it with iptables.
         </p>
 
         <p>
