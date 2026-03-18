@@ -122,7 +122,7 @@
           <li><strong>Peers tab</strong> — live peer list with connection details</li>
           <li><strong>Keys tab</strong> — wallet keys for the node identity</li>
           <li><strong>Logs tab</strong> — live streaming node logs, no SSH required</li>
-          <li><strong>Settings tab</strong> — bootstrap peer editor and password protection toggle</li>
+          <li><strong>Settings tab</strong> — bootstrap peer editor, password protection toggle, and software update</li>
         </ul>
 
         <p>
@@ -142,7 +142,25 @@
         <h2>Staying Updated</h2>
 
         <p>
-          When there's a new version of the node software, the update flow is straightforward:
+          The Settings tab has a <strong>Software Update</strong> card that shows your current
+          version alongside the latest available. When an update is out, you click
+          <strong>Update Now</strong> — and that's it. The dashboard triggers a
+          <code>git pull</code> and <code>docker compose up --build</code> on the host, the
+          container restarts, and the page comes back on the new version. The whole thing takes
+          under a minute; the only noticeable effect is a brief moment where the dashboard is
+          unreachable while the container is rebuilding.
+        </p>
+
+        <p>
+          Behind the scenes, <code>setup.sh</code> installs a lightweight systemd service called
+          <code>logos-node-updater</code> on the host. It listens on localhost only and handles
+          the actual git and Docker operations. The dashboard proxies update requests to it, which
+          is what keeps the update logic off the container and on the host where it belongs.
+        </p>
+
+        <p>
+          If you prefer to do it manually — or if something goes sideways and you want a direct
+          path — the SSH fallback still works:
         </p>
 
         <pre><code>cd /opt/logos-node
@@ -150,9 +168,7 @@ git pull
 docker compose up -d --build</code></pre>
 
         <p>
-          Docker rebuilds the container with the new version, brings it back up with the same
-          config, and the dashboard reconnects. Downtime is under a minute.
-        </p>
+          Same result, just without clicking a button.</p>
 
         <p>
           For bootstrap peers and password changes, as noted above, those go through the Settings
